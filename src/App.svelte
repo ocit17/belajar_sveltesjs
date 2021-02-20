@@ -4,6 +4,11 @@
 	let lastName  = 'Rosid';
 
 	$: fullName = `${firstName} ${lastName}`; //reactive value
+	// $: console.log(beltColor);
+	$: {
+		console.log(fullName);
+		console.log(beltColor);
+	}
 </script>
 
 <main>
