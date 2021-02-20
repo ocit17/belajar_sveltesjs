@@ -1,21 +1,20 @@
 <script>
-	let beltColor = 'black';
-	let firstName = 'Abdul';
-	let lastName  = 'Rosid';
-
-	$: fullName = `${firstName} ${lastName}`; //reactive value
-	// $: console.log(beltColor);
-	$: {
-		console.log(fullName);
-		console.log(beltColor);
-	}
+	let people = [
+		{name: 'abdul', beltColour: 'black', age: 25, id:1},
+		{name: 'abizar', beltColour: 'orange', age: 23, id:2},
+		{name: 'anissa', beltColour: 'purple', age: 20, id:3}
+	];
 </script>
 
 <main>
-	<p style="color:{beltColor}">{fullName} {beltColor} belt</p>
-	<input type="text" bind:value="{firstName}">
-	<input type="text" bind:value="{lastName}">
-	<input type="text" bind:value="{beltColor}">
+	{#each people as person (person.id)}
+		<div>
+			<h4>{person.name}</h4>
+			<p>{person.age} years old, {person.beltColour} belt.</p>
+		</div>
+	{:else}
+		<p>There are no people to showw ....</p>
+	{/each}	
 </main>
 
 <style>
@@ -24,13 +23,6 @@
 		padding: 1em;
 		max-width: 240px;
 		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
 	}
 
 	@media (min-width: 640px) {
