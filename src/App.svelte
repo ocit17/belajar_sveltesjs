@@ -1,21 +1,15 @@
 <script>
-	export let name;
 	let beltColor = 'black';
-	const handleClik = () => {
-		beltColor = 'orange';
-	}
+	let firstName = 'Abdul';
+	let lastName  = 'Rosid';
 
-	const handleInput = (e) => {
-		beltColor = e.target.value;
-	}
-
+	$: fullName = `${firstName} ${lastName}`; //reactive value
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p style="color:{beltColor}">{beltColor} belt</p>
-	<button on:click={handleClik}>update belt</button>
-	<!-- <input type="text" on:input="{handleInput}" value={beltColor}> -->
+	<p style="color:{beltColor}">{fullName} {beltColor} belt</p>
+	<input type="text" bind:value="{firstName}">
+	<input type="text" bind:value="{lastName}">
 	<input type="text" bind:value="{beltColor}">
 </main>
 
